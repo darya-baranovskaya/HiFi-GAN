@@ -20,10 +20,11 @@ class Batch:
 
 class LJSpeechDataset(torchaudio.datasets.LJSPEECH):
 
-    def __init__(self, root):
+    def __init__(self, root, max_len=16384):
         super().__init__(root=root)
+        self.max_len = max_len
 
-    def __getitem__(self, index: int, max_len=16384): #8192
+    def __getitem__(self, index: int): #8192
         waveform, _, _, transcript = super().__getitem__(index)
         waveform_length = torch.tensor([waveform.shape[-1]]).int()
 
