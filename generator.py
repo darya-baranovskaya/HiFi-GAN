@@ -17,7 +17,7 @@ class Generator(torch.nn.Module):
         ))
         self.post_net = weight_norm(nn.Conv1d(in_channels=config.n_out_initial_channels // (2**len(config.kernel_size)),
                                                out_channels=1, kernel_size=7, stride=1, padding=3))
-        self.init_weights()
+        # self.init_weights()
 
     def init_weights(self):
         for name, module in self.named_modules():
